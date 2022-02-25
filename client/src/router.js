@@ -4,15 +4,15 @@ import Router from "vue-router";
 // Authentication
 import { TokenService } from "@/services/storage.service";
 
-import Hud from "@/views/Hud.vue";
-import About from "@/views/About.vue";
-import Login from "@/views/Login.vue";
-import NotFound from "@/views/NotFound.vue";
+import Hud from "@/views/HudView.vue";
+import About from "@/views/AboutView.vue";
+import Login from "@/views/LoginView.vue";
+import NotFound from "@/views/NotFoundView.vue";
 
 // Users
-import Users from "@/views/Users.vue";
-import UserCreate from "@/views/UserCreate.vue";
-import UserEdit from "@/views/UserEdit.vue";
+import Users from "@/views/UsersView.vue";
+import UserCreate from "@/views/UserCreateView.vue";
+import UserEdit from "@/views/UserEditView.vue";
 
 Vue.use(Router);
 

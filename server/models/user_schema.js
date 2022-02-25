@@ -2,6 +2,13 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 const Bcrypt = require("bcryptjs");
 
+//Mongo Shell to insert first user
+// db.users.insert({
+//   "name": "Mitch Hughes",
+//   "email": "mitch.hughes@retaildimension.co.nz",
+//   "hash": "$2a$10$Tq/Mf5.bCcpgQq4dZW19TeQ9FohX6qsu7NpksyGxLFP0yMb0Kl6oK",
+// });
+  
 var UserSchema = new Schema({
   name: { type: String, required: true },
   hash: { type: String, required: true },

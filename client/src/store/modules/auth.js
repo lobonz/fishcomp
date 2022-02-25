@@ -67,7 +67,7 @@ const actions = {
     commit("logoutSuccess");
     router.push("/login");
   },
-  async initialLoad(context) {}
+  async initialLoad() {}//context
 };
 
 const mutations = {
