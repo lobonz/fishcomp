@@ -1,5 +1,5 @@
 module.exports = {
-  APISERVER: "127.0.0.1",
+  APISERVER: "192.168.1.68",
   APIPORT: 8081,
   APIPROTOCOL: "HTTP"
 };

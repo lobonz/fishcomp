@@ -20,6 +20,10 @@ const BoatService = {
 
   deleteBoat(id) {
     return ApiService.delete("boats/" + id);
+  },
+
+  addImage (formData) {
+    return ApiService.put('boats/addimage', formData)
   }
 };
 

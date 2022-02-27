@@ -12,6 +12,7 @@
           <tr>
             <td>Name</td>
             <td>Email</td>
+            <td>Fishing</td>
             <td width="100" align="center">Action</td>
           </tr>
         </thead>
@@ -19,11 +20,16 @@
           <tr v-for="user in users" :key="user.id">
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
+            <td>
+              <span v-if="user.fishing == 1" >Yes</span>
+              <span v-else>No</span>
+            </td>
             <td align="center">
               <span class="pointer" @click="editUser(user._id)">
                 <font-awesome-icon icon="edit" />
               </span>
               <span
+                style="margin-left: 10px;" 
                 class="ml-3 pointer"
                 @click="deleteUser(user._id)"
                 v-if="users.length > 1"

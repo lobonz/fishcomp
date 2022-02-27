@@ -1,16 +1,17 @@
 const express = require('express');
-
 const boatService = require('../services/boat.service');
-
 const router = express.Router();
+const multer = require("multer")
 
+upload = multer({dest: './uploads'})
 router
   .post('/create', createBoat)
   .get('/read/:id', readBoat)
   .put('/update/:id', updateBoat)
-  .post('/delete', deleteBoat)
+  .delete('/:id', deleteBoat)
   .get('/', getAllBoats)
-
+  .put('/addimage', upload.single("file"), addBoatimage)
+  
 module.exports = router;
 
 function createBoat(req, res, next) {
@@ -38,7 +39,17 @@ function updateBoat(req, res, next) {
 }
 
 function deleteBoat(req, res, next) {
-  boatService.delete(req.params.id)
+  boatService.deleteBoat(req.params.id)
       .then(() => res.json({}))
       .catch(err => next(err));
 }
+
+//router.put("/addimage", upload.single("file"), async (req, res) => {
+function addBoatimage (req, res, next) {
+  console.log(req.body.id)
+  boatService.addBoatimage(req.body.id, req.file)
+      .then(() => res.json({}))
+      .catch(err => next(err));
+}
+
+

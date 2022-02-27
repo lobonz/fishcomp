@@ -11,6 +11,8 @@ var SpeciesSchema = new Schema({
   ],
   factor_rod: Number,
   factor_spear: Number,
+  imagefile: String,
+  imagename: String,
 },
 {//Automatically add createdAt and updatedAt timestamps
   timestamps: true

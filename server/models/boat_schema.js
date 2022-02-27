@@ -5,6 +5,7 @@ var BoatSchema = new Schema({
   name: { type: String, required: true },
   captain: String,
   imagefile: String,
+  imagename: String,
 },
 {//Automatically add createdAt and updatedAt timestamps
   timestamps: true

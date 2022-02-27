@@ -42,17 +42,14 @@ export default {
   data() {
     return {
       name: "",
-      email: "",
-      password: null
+      captain: "",
     };
   },
   methods: {
     async addBoat() {
       var response = await BoatService.addBoat({
         name: this.name,
-        boatname: this.boatname,
-        email: this.email,
-        password: this.password
+        captain: this.captain
       });
       this.$router.push({
         name: "BoatEdit",

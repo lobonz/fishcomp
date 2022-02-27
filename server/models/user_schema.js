@@ -13,6 +13,7 @@ var UserSchema = new Schema({
   name: { type: String, required: true },
   hash: { type: String, required: true },
   email: { type: String, unique: true, required: true },
+  fishing: {type: Number}
 },
 {//Automatically add createdAt and updatedAt timestamps
   timestamps: true

@@ -40,6 +40,22 @@
                 ></b-form-input>
               </b-form-group>
             </div>
+            <div>
+              <b-form-group
+                id="fishing-group"
+                label="Fishing"
+                label-for="fishing"
+              >
+                <b-form-checkbox
+                  id="fishing"
+                  v-model="fishing"
+                  name="cfishing"
+                  value="1"
+                  unchecked-value="0"
+                >
+                </b-form-checkbox>
+              </b-form-group>
+            </div>
 
             <div>
               <b-button variant="outline-primary" @click="updateUser"
@@ -61,7 +77,8 @@ export default {
     return {
       name: "",
       email: "",
-      password: null
+      password: null,
+      fishing: 0
     };
   },
   mounted() {
@@ -74,13 +91,15 @@ export default {
       });
       this.name = response.data.name;
       this.email = response.data.email;
+      this.fishing = response.data.fishing;
     },
     async updateUser() {
       await UserService.updateUser({
         id: this.$route.params.id,
         name: this.name,
         email: this.email,
-        password: this.password
+        password: this.password,
+        fishing: this.fishing
       });
       this.$router.push({ name: "Users" });
     }

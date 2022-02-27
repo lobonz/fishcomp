@@ -1,6 +1,11 @@
 'use strict';
 const jwt = require('jsonwebtoken');
 const Boat = require('../models/boat_schema');
+const path = require("path")
+const sharp = require('sharp')
+const fs = require("fs")
+var mime = require('mime')
+const imagehandler = require("../helpers/image-handler")
 
 async function getAllBoats() {
   return await Boat.find().select('-hash')
@@ -23,7 +28,7 @@ async function createBoat (boatParam) {
 }
 
 async function readBoat(id) {
-  const boat = await Boat.findById(id).select('-hash');
+  const boat = await Boat.findById(id);
   return boat
 }
 
@@ -46,26 +51,57 @@ async function updateBoat(id, boatParam) {
   await boat.save();
 }
 
-async function deleteBoat(id) {
-  await Boat.findByIdAndRemove(id);
+async function deleteBoat (id) {
+  Boat.findById(id, async (error, boat) => {
+    if (error) {
+      console.error(error);
+    }
+    //remove uploaded original
+    const boatimagefile = path.join(__dirname, "../uploads", boat.imagefile)
+    fs.unlinkSync(boatimagefile)
+    await Boat.findByIdAndRemove(id);
+  })
 }
 
-async function authenticateBoat({ email, password }) {
-  email = String(email).toLowerCase()
-  //console.log (email)
-  const boat = await Boat.findOne({ email: new RegExp(`^${email}$`, 'i') })
-  //console.log (boat.email)
-  if (boat && bcrypt.compareSync(password, boat.hash)) {
+// Add a Boat Image
+//router.put("/addimage", upload.single("file"), async (req, res) => {
+async function addBoatimage(id, file) {
+    Boat.findById(id, "imagefile", async (error, boat) => {
+      if (error) {
+        console.error(error);
+      }
 
-      const { hash, ...boatWithoutHash } = boat.toObject();
-      //console.log(process.env.SECRET)
-      const token = jwt.sign({ sub: boat.id }, process.env.SECRET);
-      return {
-          ...boatWithoutHash,
-          token
-      };
+      if (boat.imagefile) {
+        //remove existing
+        fs.unlinkSync(path.join(__dirname, "../uploads", boat.imagefile))
+        boat.imagename = ""
+      }
+      console.log(file)//originalname
+      var imagefile = file.filename + path.extname(file.originalname)
+
+      const uploadedfile = path.join(__dirname, "../uploads", file.filename)
+      console.log(uploadedfile)
+      const destinationfile = path.join(__dirname, "../uploads", imagefile)
+
+      // Run some optimisations on the uploaded image
+      await sharp(uploadedfile)
+      .resize(1920, null, { fit: 'inside', withoutEnlargement: true }).toFile(destinationfile)
+      
+      //remove uploaded original
+      fs.unlinkSync(uploadedfile)
+        
+      boat.imagefile = imagefile
+      boat.imagename = file.originalname
+      
+      boat.save(function (error) {
+        if (error) {
+          console.log(error);
+        } else {
+          return { success: true }
+        }
+      });
+    });
   }
-}
 
 module.exports = {
   getAllBoats,
@@ -73,4 +109,5 @@ module.exports = {
   readBoat,
   updateBoat,
   deleteBoat,
+  addBoatimage,
 };

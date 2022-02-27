@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const jwt = require('./helpers/jwt');
 
 const morgan = require("morgan")
-const multer = require("multer")
+
 const path = require("path")
 const fs = require("fs")
 
@@ -38,6 +38,9 @@ app.use(express.static(__dirname + '/views/'));
 
 // Defining route middleware
 app.use('/api/users', require('./routes/users'));
+app.use('/api/boats', require('./routes/boats'));
+app.use('/api/species', require('./routes/species'));
+app.use('/api/images', require('./routes/images'));
 
 app.get("/*", (req, res) => {
   res.send({

@@ -20,7 +20,10 @@
           <tr v-for="boat in boats" :key="boat.id">
             <td>{{ boat.name }}</td>
             <td>{{ boat.captain }}</td>
-            <td>{{ boat.imagefile }}</td>
+            <td><img
+                  style="height: 200px;"
+                  :src="`${server}/api/images/${boat.imagefile}/200`"
+                /></td>
             <td align="center">
               <span class="pointer" @click="editBoat(boat._id)">
                 <font-awesome-icon icon="edit" />
@@ -55,6 +58,11 @@ export default {
     return {
       boats: []
     };
+  },
+  computed: {
+    server: function () {
+      return this.$parent.server
+    },
   },
   mounted() {
     this.getBoats();

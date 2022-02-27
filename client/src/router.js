@@ -14,6 +14,17 @@ import Users from "@/views/UsersView.vue";
 import UserCreate from "@/views/UserCreateView.vue";
 import UserEdit from "@/views/UserEditView.vue";
 
+// Species
+import Species from "@/views/SpeciesView.vue";
+import SpecieCreate from "@/views/SpecieCreateView.vue";
+import SpecieEdit from "@/views/SpecieEditView.vue";
+
+
+// Boats
+import Boats from "@/views/BoatsView.vue";
+import BoatCreate from "@/views/BoatCreateView.vue";
+import BoatEdit from "@/views/BoatEditView.vue";
+
 Vue.use(Router);
 
 const router = new Router({
@@ -39,7 +50,39 @@ const router = new Router({
         onlyWhenLoggedOut: true
       }
     },
-    // ////// USERS
+    // SPECIES
+    {
+      path: "/species",
+      name: "Species",
+      component: Species
+    },
+    {
+      path: "/species/create",
+      name: "SpecieCreate",
+      component: SpecieCreate
+    },
+    {
+      path: "/species/:id",
+      name: "SpecieEdit",
+      component: SpecieEdit
+    },
+    // BOATS
+    {
+      path: "/boats",
+      name: "Boats",
+      component: Boats
+    },
+    {
+      path: "/boats/create",
+      name: "BoatCreate",
+      component: BoatCreate
+    },
+    {
+      path: "/boats/:id",
+      name: "BoatEdit",
+      component: BoatEdit
+    },
+    // USERS
     {
       path: "/users",
       name: "Users",

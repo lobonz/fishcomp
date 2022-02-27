@@ -9,18 +9,7 @@ function jwt() {
         path: [
             // public routes that don't require authentication
             '/api/users/authenticate/',
-            /\/api\/assembly\/download\/.+/ig,
-            /\/api\/assembly\/image\/.+/ig,
-            /\/api\/assembly\/edrawing\/.+/ig,
-            /\/api\/assembly\/pdf\/.+/ig,
-            /\/api\/part\/download\/.+/ig,
-            /\/api\/part\/image\/.+/ig,
-            /\/api\/part\/edrawing\/.+/ig,
-            /\/api\/part\/pdf\/.+/ig,
-            /\/api\/bom\/excel\/.+/ig,
-            /\/api\/bom\/drawings\/.+/ig,
-            /\/api\/bom\/labels\/.+/ig,
-            /\/api\/bom\/sustainability\/.+/ig
+            /\/api\/images\/.+/ig,
         ]
     });
 }
