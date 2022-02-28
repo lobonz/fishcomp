@@ -20,6 +20,7 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
@@ -41,6 +42,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { faShip } from "@fortawesome/free-solid-svg-icons";
 import { faFish } from "@fortawesome/free-solid-svg-icons";
+import { faRulerVertical } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSignInAlt);
 library.add(faUsers);
@@ -49,6 +51,7 @@ library.add(faTimes);
 library.add(faCog);
 library.add(faShip);
 library.add(faFish);
+library.add(faRulerVertical);
 
 // Set the base URL of the API
 ApiService.init(

@@ -7,7 +7,7 @@
     </div>
 
     <div id="file-default__BV_file_outer_" class="custom-file b-form-file is-valid">
-      <input type="file" :id="id" class="custom-file-input is-valid" ref="file" @change="selectFile">
+      <input type="file" :id="id" class="form-control" ref="file" @change="selectFile" >
       <!--<label :for="id" data-browse="Browse" class="custom-file-label" style="z-index: 0;">{{file.name}}</label>-->
     </div>
 

@@ -5,9 +5,9 @@ var FishSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'user' },
   boat: { type: Schema.Types.ObjectId, ref: 'boat' },
   species: { type: Schema.Types.ObjectId, ref: 'species' },
-  method: { type: Schema.Types.ObjectId, ref: 'method' },
-  length: { type: Schema.Types.ObjectId, ref: 'length' },
-  points: { type: Number, required: true },
+  method: String, //Rod, Spear
+  length: String,
+  points: Number,
   imagefile: String,
 },
 {//Automatically add createdAt and updatedAt timestamps

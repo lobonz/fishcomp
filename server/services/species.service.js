@@ -1,5 +1,4 @@
 'use strict';
-const jwt = require('jsonwebtoken');
 const Species = require('../models/species_schema');
 const path = require("path")
 const sharp = require('sharp')

@@ -1,5 +1,4 @@
 'use strict';
-const jwt = require('jsonwebtoken');
 const Boat = require('../models/boat_schema');
 const path = require("path")
 const sharp = require('sharp')
@@ -8,7 +7,7 @@ var mime = require('mime')
 const imagehandler = require("../helpers/image-handler")
 
 async function getAllBoats() {
-  return await Boat.find().select('-hash')
+  return await Boat.find()
 }
 
 async function createBoat (boatParam) {

@@ -26,7 +26,7 @@ async function getAllUsers() {
 
 async function createUser(userParam) {
   // validate
-  if (await User.findOne({ username: userParam.username })) {
+  if (await User.findOne({ username: userParam.name })) {
       throw 'Username "' + userParam.username + '" is already taken';
   }
   //add default permissions

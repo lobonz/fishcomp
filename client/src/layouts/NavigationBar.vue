@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="light" variant="primary">
+  <b-navbar toggleable="lg" type="dark" variant="primary">
     <b-navbar-brand to="/"
       ><img src="/icons/fishcomp.svg" style="margin-left: 10px;width: 40px;"
     /></b-navbar-brand>
@@ -7,7 +7,7 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav v-if="loggedIn == true">
+      <b-navbar-nav v-if="loggedIn == true" class="h2">
         <b-nav-item to="/">Fish</b-nav-item>
         <b-nav-item to="/boats">Boats</b-nav-item>
         <b-nav-item to="/species">Species</b-nav-item>
@@ -29,4 +29,9 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+.navbar-brand
+{
+  font-size: 100px;
+}
+</style>

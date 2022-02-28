@@ -11,7 +11,6 @@
         <thead>
           <tr>
             <td>Name</td>
-            <td>Email</td>
             <td>Fishing</td>
             <td width="100" align="center">Action</td>
           </tr>
@@ -19,7 +18,6 @@
         <tbody>
           <tr v-for="user in users" :key="user.id">
             <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
             <td>
               <span v-if="user.fishing == 1" >Yes</span>
               <span v-else>No</span>

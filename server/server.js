@@ -40,6 +40,7 @@ app.use(express.static(__dirname + '/views/'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/boats', require('./routes/boats'));
 app.use('/api/species', require('./routes/species'));
+app.use('/api/fish', require('./routes/fish'));
 app.use('/api/images', require('./routes/images'));
 
 app.get("/*", (req, res) => {

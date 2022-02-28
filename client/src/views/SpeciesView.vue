@@ -22,7 +22,7 @@
           <tr v-for="specie in species" :key="specie.id">
             <td>{{ specie.name }}</td>
             <td><img
-                  style="width: 200px;"
+                  style="width: 150px;"
                   :src="`${server}/api/images/${specie.imagefile}/200`"
                 />
             </td>
@@ -51,7 +51,7 @@
     <div v-else>
       There are no species.. Lets add one now <br /><br />
       <b-button variant="outline-primary" :to="{ name: 'SpecieCreate' }"
-        >Add Specie</b-button
+        >Add Species</b-button
       >
     </div>
   </div>
@@ -89,8 +89,8 @@ export default {
       this.$router.push({ name: "SpecieEdit", params: { id: id } });
     },
     sortLengths (lengths){
-      let sortedLengths;
-      sortedLengths = lengths.sort(function(a,b){
+      let sortedLengths = [...lengths];
+      sortedLengths = sortedLengths.sort(function(a,b){
         let x = a.length.toLowerCase();
         let y = b.length.toLowerCase();
         if(x>y){return 1;}

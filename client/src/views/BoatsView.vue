@@ -20,10 +20,14 @@
           <tr v-for="boat in boats" :key="boat.id">
             <td>{{ boat.name }}</td>
             <td>{{ boat.captain }}</td>
-            <td><img
-                  style="height: 200px;"
+            <td><img v-if="boat.imagefile"
+                  style="width: 150px;"
                   :src="`${server}/api/images/${boat.imagefile}/200`"
-                /></td>
+                />
+                <img v-else style="width: 150px;" src="/images/image-placeholder.jpg" />
+
+
+            </td>
             <td align="center">
               <span class="pointer" @click="editBoat(boat._id)">
                 <font-awesome-icon icon="edit" />

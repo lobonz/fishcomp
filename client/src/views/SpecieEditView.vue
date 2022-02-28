@@ -266,8 +266,8 @@ export default {
       this.newImageFile = file
     },
     sortLengths (lengths){
-      let sortedLengths;
-      sortedLengths = lengths.sort(function(a,b){
+      let sortedLengths = [...lengths];
+      sortedLengths = sortedLengths.sort(function(a,b){
         let x = a.length.toLowerCase();
         let y = b.length.toLowerCase();
         if(x>y){return 1;}

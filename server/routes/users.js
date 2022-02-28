@@ -8,7 +8,7 @@ router
   .post('/create', createUser)
   .get('/read/:id', readUser)
   .put('/update/:id', updateUser)
-  .post('/delete', deleteUser)
+  .delete('/:id', deleteUser)
   .post('/authenticate', authenticateUser)
   .get('/', getAllUsers)
 
@@ -45,7 +45,7 @@ function updateUser(req, res, next) {
 }
 
 function deleteUser(req, res, next) {
-  userService.delete(req.params.id)
+  userService.deleteUser(req.params.id)
       .then(() => res.json({}))
       .catch(err => next(err));
 }
