@@ -44,7 +44,11 @@
         />
       </div>
     </form>
+    <div style="text-align: center;">
+    <img src="/images/fish.png" />
   </div>
+  </div>
+  
 </template>
 
 <script>

@@ -44,6 +44,8 @@ export default {
   },
   methods: {
     clearAllData () {
+      console.log("CLEARED")
+      this.$refs.file.value = "";
       Object.assign(this.$data, initialState())
     },
     selectFile () {

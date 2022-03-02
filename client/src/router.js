@@ -9,6 +9,10 @@ import Fish from "@/views/FishView.vue";
 import FishCreate from "@/views/FishCreateView.vue";
 import FishEdit from "@/views/FishEditView.vue";
 
+// Results
+import Results from "@/views/ResultsView.vue";
+
+
 import About from "@/views/AboutView.vue";
 import Login from "@/views/LoginView.vue";
 import NotFound from "@/views/NotFoundView.vue";
@@ -49,6 +53,11 @@ const router = new Router({
       path: "/fish/:id",
       name: "FishEdit",
       component: FishEdit
+    },
+    {
+      path: "/results",
+      name: "results",
+      component: Results //() => import("./views/About.vue")
     },
     {
       path: "/about",

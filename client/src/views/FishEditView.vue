@@ -18,53 +18,33 @@
               </span>
             </div>
         </b-row>
-        <b-row>
-          <b-col>
-            <b-form-group
-                style="margin-top:20px;"
-                id="imagefile-group"
-                label="Image"
-                label-for="imagefile"
-              >
-              <b-row>
-                
-                <b-col>
+        <b-row class="mb-3">
+            <b-col>
+              <b-form-group
+                  style="margin-top:20px;"
+                  id="imagefile-group"
+                  label="Image"
+                  label-for="imagefile"
+                >
                   <file-upload
                   :allowedtypes="['image/jpeg', 'image/png']"
                   @fileSelected="onImageSelected"
                   ref="imageUpload"
                 />
-                </b-col>
-                <b-col>
-                  <span v-if="newImageFile">
+              </b-form-group>
+            </b-col>
+        </b-row>
+        <b-row class="mb-3" v-if="newImageFile">
+              <b-col>
                   <b-button
                     :disabled="this.newImageFile == null"
-                    variant="outline-primary"
+                    variant="outline-success"
                     @click="addImage"
                   >
                     <i class="fa fa-arrow-up" aria-hidden="true"></i>
                     Update Image
                   </b-button>
-                  </span>
-                </b-col>
-              </b-row>
-              </b-form-group>
-          </b-col>
-        </b-row>
-
-        <b-row  align-v="center"  class="mb-3">
-          <b-col cols="2">
-            <b-button :disabled="points == 0||this.user == null||boat == null" class="mt-3" variant="outline-primary" @click="updateFish">
-              Update Fish
-            </b-button>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <div>
-            <h3>No stretching the truth!</h3>
-            </div>
-          </b-col>
+              </b-col>
         </b-row>
 
         <b-row  align-v="center"  class="mb-3">
@@ -131,6 +111,35 @@
             <h2 v-else>Thats {{points}} Point!</h2>
           </b-col>
         </b-row>
+
+        <b-row>
+          <b-col>
+            <div>
+            <h3>No stretching the truth!</h3>
+            </div>
+          </b-col>
+        </b-row>
+        <b-row  align-v="center"  class="mb-4">
+          <b-col>
+            <b-button :disabled="points == 0||this.user == null||boat == null" class="mt-3" variant="outline-success" @click="updateFish">
+              Update Fish
+            </b-button>
+          </b-col>
+        </b-row>
+
+        <b-row  align-v="center"  class="mt-4">
+          <b-col>
+          </b-col>
+        </b-row>
+
+        <b-row  align-v="center"  class="mt-4">
+          <b-col cols="4" align-self="end">
+            <b-button @click="deleteFish" variant="outline-danger">
+              Delete Fish
+            </b-button>
+          </b-col>
+        </b-row>
+        
 
       <!-- 
         user: { type: Schema.Types.ObjectId, ref: 'user' },
@@ -283,7 +292,7 @@ export default {
       const response = await UserService.fetchUsers()
       console.log(response.data);
       var users = response.data.map(function (user) {
-            return { value: user._id, text: user.name }
+            return { value: user._id, text: user.name, fishing: user.fishing }
       })
       
       var anglers = users
@@ -318,6 +327,10 @@ export default {
         return 0;
       });
       return sortedLengths;
+    },
+    async deleteFish() {
+      await FishService.deleteFish(this.$route.params.id);
+     this.$router.push({ name: "Fish" });
     }
   }
 };

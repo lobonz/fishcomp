@@ -187,16 +187,18 @@ export default {
       const response = await UserService.fetchUsers()
       console.log(response.data);
       var users = response.data.map(function (user) {
-            return { value: user._id, text: user.name }
+            return { value: user._id, text: user.name, fishing: user.fishing }
       })
       
       var anglers = users
 
       anglers.forEach(function(user) {
         if (user.fishing != 1) {
+          console.log("Spliceing"+user.name)
           anglers.splice(anglers.indexOf(user), 1);
         }
       });
+      console.table(anglers)
        this.anglers = anglers
       //Need to set selected to current user
     },

@@ -43,6 +43,7 @@ import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { faShip } from "@fortawesome/free-solid-svg-icons";
 import { faFish } from "@fortawesome/free-solid-svg-icons";
 import { faRulerVertical } from "@fortawesome/free-solid-svg-icons";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSignInAlt);
 library.add(faUsers);
@@ -52,6 +53,7 @@ library.add(faCog);
 library.add(faShip);
 library.add(faFish);
 library.add(faRulerVertical);
+library.add(faTrophy);
 
 // Set the base URL of the API
 ApiService.init(

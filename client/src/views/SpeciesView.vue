@@ -21,10 +21,16 @@
         <tbody>
           <tr v-for="specie in species" :key="specie.id">
             <td>{{ specie.name }}</td>
-            <td><img
+            <td>
+              <img v-if="specie.imagefile"
                   style="width: 150px;"
                   :src="`${server}/api/images/${specie.imagefile}/200`"
                 />
+                <img v-else
+                  style="width: 150px;"
+                  :src="`/images/nofishimage.jpg`"
+                />
+
             </td>
             <td>{{ specie.factor_rod }}</td>
             <td>{{ specie.factor_spear }}</td>

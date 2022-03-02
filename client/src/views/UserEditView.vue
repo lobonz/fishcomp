@@ -49,13 +49,31 @@
                 <b-form-checkbox
                   id="fishing"
                   v-model="fishing"
-                  name="cfishing"
+                  name="fishing"
                   value="1"
                   unchecked-value="0"
                 >
                 </b-form-checkbox>
               </b-form-group>
             </div>
+
+            <div>
+              <b-form-group
+                id="admin-group"
+                label="Admin"
+                label-for="admin"
+              >
+                <b-form-checkbox
+                  id="admin"
+                  v-model="admin"
+                  name="admin"
+                  value="1"
+                  unchecked-value="0"
+                >
+                </b-form-checkbox>
+              </b-form-group>
+            </div>
+
 
             <div>
               <b-button variant="outline-primary" @click="updateUser"
@@ -78,7 +96,8 @@ export default {
       name: "",
       email: "",
       password: null,
-      fishing: 0
+      fishing: 0,
+      admin: 0
     };
   },
   mounted() {
@@ -92,6 +111,7 @@ export default {
       this.name = response.data.name;
       this.email = response.data.email;
       this.fishing = response.data.fishing;
+      this.admin = response.data.admin;
     },
     async updateUser() {
       await UserService.updateUser({
@@ -99,7 +119,8 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-        fishing: this.fishing
+        fishing: this.fishing,
+        admin: this.admin
       });
       this.$router.push({ name: "Users" });
     }
